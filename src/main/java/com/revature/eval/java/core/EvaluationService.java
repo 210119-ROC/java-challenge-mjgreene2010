@@ -22,7 +22,12 @@ public class EvaluationService {
 
 		public static long toMilesPerHour(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return 0;
+			
+			if (kilometersPerHour < 0) {
+				return -1;
+			}
+			
+			return (long) (Math.round(kilometersPerHour * 0.621371));
 		}
 
 		/**
@@ -41,7 +46,14 @@ public class EvaluationService {
 		 * Value"
 		 */
 		public static String printConversion(double kilometersPerHour) {
-			// TODO Write an implementation for this method declaration
+			double km = kilometersPerHour;
+			double mi = toMilesPerHour(km);
+			
+			if (kilometersPerHour < 0) {
+				return "Invalid Value";
+			}
+		
+			System.out.println(km + " km/h = " + mi + " mi/h");
 			return null;
 		}
 	}
@@ -66,9 +78,15 @@ public class EvaluationService {
 	 * If the parameter kiloBytes is less than 0 then print the text "Invalid
 	 * Value".
 	 */
-	public String printMegaBytesAndKiloBytes(int XX) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public String printMegaBytesAndKiloBytes(int kiloBytes) {
+		
+		
+		int mb = kiloBytes / 1024;
+		int kb = kiloBytes % 1024;
+		
+		return (String.format("%d KB = %d MB and %d KB", kiloBytes, mb, kb));
+		
+		
 	}
 
 	/**
@@ -92,6 +110,15 @@ public class EvaluationService {
 	 */
 	public boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
 		// TODO Write an implementation for this method declaration
+		
+		if (hourOfDay < 0 || hourOfDay > 23) {
+			return false;
+		}
+		
+		if (isBarking && (hourOfDay < 8 || hourOfDay > 22) ) {
+			return true;
+		} 
+		
 		return false;
 	}
 
@@ -108,9 +135,15 @@ public class EvaluationService {
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
 		// TODO Write an implementation for this method declaration
+		
+		int num1 = (int) (firstNum * 1000);
+		int num2 = (int) (secondNum * 1000);
+		
+		if (num1 == num2) return true;
+		
 		return false;
 	}
-
+;
 	/**
 	 * 5. Teen Number Checker
 	 * 
@@ -125,6 +158,8 @@ public class EvaluationService {
 
 		public static boolean hasTeen(int x, int y, int z) {
 			// TODO Write an implementation for this method declaration
+			
+			if (isTeen(x) || isTeen(y) || isTeen(z)) return true;
 			return false;
 		}
 
@@ -133,6 +168,9 @@ public class EvaluationService {
 
 		public static boolean isTeen(int number) {
 			// TODO Write an implementation for this method declaration
+			
+			if (number > 13 && number <19) return true;
+			
 			return false;
 		}
 	}
