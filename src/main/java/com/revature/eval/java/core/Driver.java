@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
-import com.revature.eval.java.core.EvaluationService.TeenNumberChecker;
+import com.revature.eval.java.core.EvaluationService;
+import com.revature.eval.java.core.EvaluationService.SpeedConverter;
 
 public class Driver {
 
@@ -9,7 +10,7 @@ public class Driver {
 		
 		EvaluationService evaluation = new EvaluationService();
 		
-		System.out.println(TeenNumberChecker.hasTeen(11, 22, 30));
+		System.out.println(SpeedConverter.printConversion(1.5));
 
 	}
 

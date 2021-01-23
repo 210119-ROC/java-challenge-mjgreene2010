@@ -47,14 +47,14 @@ public class EvaluationService {
 		 */
 		public static String printConversion(double kilometersPerHour) {
 			double km = kilometersPerHour;
-			double mi = toMilesPerHour(km);
+			int mi = (int) toMilesPerHour(km);
 			
 			if (kilometersPerHour < 0) {
 				return "Invalid Value";
 			}
 		
-			System.out.println(km + " km/h = " + mi + " mi/h");
-			return null;
+			return String.format("%.2f km/h = %d mi/h", km, mi);
+			
 		}
 	}
 
@@ -169,7 +169,7 @@ public class EvaluationService {
 		public static boolean isTeen(int number) {
 			// TODO Write an implementation for this method declaration
 			
-			if (number > 13 && number <19) return true;
+			if (number >= 13 && number <= 19) return true;
 			
 			return false;
 		}
@@ -192,7 +192,12 @@ public class EvaluationService {
 	 */
 	public String printYearsAndDays(long minutes) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		if (minutes < 0) System.out.println("Invalid Value");
+		
+		long years = minutes / 525600;
+		long days = (minutes % 525600) / 1440;
+		
+		return (String.format("%d min = %d y and %d d", minutes, years, days));
 	}
 
 	/**
@@ -206,7 +211,32 @@ public class EvaluationService {
 	 */
 	public String printNumberInWord(int number) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+		switch (number) {
+			case 0: 
+				return "ZERO";
+			case 1:
+				return "ONE";
+			case 2:
+				return "TWO";
+			case 3: 
+				return "THREE";
+			case 4:
+				return "FOUR";
+			case 5:
+				return "FIVE";
+			case 6:
+				return "SIX";
+			case 7:
+				return "SEVEN";
+			case 8:
+				return "EIGHT";
+			case 9:
+				return "NINE";
+			default: 
+				return "OTHER";
+		
+		}
 	}
 
 	/**
@@ -230,7 +260,19 @@ public class EvaluationService {
 	 */
 	public int getGreatestCommonDivisor(int first, int second) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		
+		int gcd = 0;
+		if (first < 10 || second < 10) return -1;
+		
+		for (int i = 1; i < first; i++) {
+			if ((first % i == 0) && (second % i == 0)) {
+				if (gcd < i) {
+					gcd = i;
+				}
+			}
+		}
+		
+		return gcd;
 	}
 
 	/**
